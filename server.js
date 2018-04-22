@@ -1,21 +1,9 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-// Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(bodyParser.json());
-// Serve up static assets
-app.use(express.static("client/build"));
-// Add routes, both API and view
-app.use(routes);
+app.use(express.static(__dirname + '/dist/'));
+// app.use('/src/assets', express.static(__dirname + '/src/assets/'));
 
-// Connect to the Mongo DB
 
-// Start the API server
-app.listen(PORT, function () {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-});
+app.listen(process.env.PORT || 8080);
